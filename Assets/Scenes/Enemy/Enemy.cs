@@ -8,6 +8,19 @@ public class Enemy : MonoBehaviour
         if (greenBird != null)
         {
             Destroy(gameObject);
+            return;
+        }
+
+        Enemy enemy = collision.collider.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            return;
+        }
+
+        if (collision.contacts[0].normal.y <= -0.5)
+        {
+            Destroy(gameObject);
+            return;
         }
     }
 }
